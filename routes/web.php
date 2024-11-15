@@ -16,14 +16,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::get('login', 'Auth\AuthController@index')->name('login');
 
-Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
+Route::post('post-login', 'Auth\AuthController@postLogin')->name('login.post');
 
-Route::get('registration', [AuthController::class, 'registration'])->name('register');
+Route::get('registration', 'Auth\AuthController@registration')->name('register');
 
-Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
+Route::post('post-registration', 'Auth\AuthController@postRegistration')->name('register.post');
 
-Route::get('dashboard', [AuthController::class, 'dashboard']);
+Route::get('dashboard', 'Auth\AuthController@dashboard');
 
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('logout', 'Auth\AuthController@logout')->name('logout');
