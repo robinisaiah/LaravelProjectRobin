@@ -34,7 +34,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('dashboard')
-                        ->withSuccess('You have Successfully loggedin');
+                ->withSuccess('You have Successfully loggedin');
         }
 
 
@@ -60,7 +60,7 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return view('auth.dashboard');
         }
 
@@ -79,7 +79,8 @@ class AuthController extends Controller
 
 
 
-    public function logout() {
+    public function logout()
+    {
         Session::flush();
         Auth::logout();
 
