@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Jobs\SendTestEmail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +29,16 @@ Route::post('post-registration', 'Auth\AuthController@postRegistration')->name('
 Route::get('dashboard', 'Auth\AuthController@dashboard');
 
 Route::get('logout', 'Auth\AuthController@logout')->name('logout');
+
+Route::get('/send-email', function () {
+    $data = [
+        'name' => 'John Doe',
+        'email' => 'johndoe@example.com',
+    ];
+
+    // Dispatch the job
+    SendTestEmail::dispatch($data);
+
+    return 'Email queued successfully!';
+});
+
